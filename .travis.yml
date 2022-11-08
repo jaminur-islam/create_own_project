@@ -1,0 +1,21 @@
+ language: node_js # language use node_js
+ node_js: 
+      - "18" #node version use
+ dist: trusty #operating system (trusty linux specific version)
+ services: 
+      - postgresql
+      - redis-server # 2 database instant create by travis ci
+ env: 
+    - NODE_ENV=ci # which env running the server
+    - PORT=3000
+ cache: 
+   directory: 
+          - node_modules
+          - my-app/node_modules # which one i will cache. their list of folders
+ install: 
+      - npm install # which command i will run. their list
+      - npm run build    
+script: 
+     - nohup npm run start & #(nohup) it help to run your server anyway (&) it help to running your server on background on your macing
+     - sleep 3 # wait for running server
+     - npm run test  

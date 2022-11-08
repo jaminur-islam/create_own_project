@@ -6,6 +6,7 @@ const client = redis.createClient(redisUrl);
 const { db } = require("../../prismaClient/prismaClient");
 const { prismaRedisCacheHandler } = require("redis-prisma-middleware");
 client.connect();
+console.log("test");
 
 /* const prismaRedisCacheHandler = (validation = 0, client) => {
   const queryMethods = [
